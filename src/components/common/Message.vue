@@ -8,10 +8,10 @@
   <div class="rootstyle" @click="itemClick(id)">
     <div class="leftimgandlablestyle">
       <img :src="imgurl" alt="" class="imgstyle">
-      <div class="rightOfImg">
+     <!-- <div class="rightOfImg">
         <span class="titlelable">{{title}}</span>
         <span class="subtitle">{{subtitle}}</span>
-      </div>
+      </div>-->
 
     </div>
     <span class="sendtime">{{sendtime}}</span>

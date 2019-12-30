@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="">
 
-    <message
+   <!-- <message
       class="itemstyle"
       v-for="(item,index) in datas.data"
       :key="index"
@@ -9,21 +9,31 @@
       :title="item.title"
       :subtitle="item.subtitle"
       :sendtime="item.time"
-      :imgurl="require('../../assets/img/a_7.png')"
+      :imgurl="require('../../assets/img/listImg.png')"
       :itemClick="clickitem"
 
-    ></message>
+    ></message>-->
+    <DocItem
+      class="itemstyle"
+      v-for="(item,index) in datas.data"
+      :key="index"
+      :data="item"
+      :imgurl="require('../../assets/img/listImg.png')"
+      :itemClick="clickitem"
+    ></DocItem>
   </div>
 </template>
 
 <script>
+import DocItem from '../common/DocItem'
 import Message from '../common/Message'
 import messagelist from '../../json/messagelist.json'
+import doclist from '../../json/doclist.json'
 export default {
 
   data() {
     return {
-      datas:messagelist
+      datas:doclist
     }
   },
   methods:{
@@ -33,7 +43,9 @@ export default {
   },
 
   components:{
-    'message':Message
+    'message':Message,
+      DocItem,
+      doclist
   }
 }
 </script>
