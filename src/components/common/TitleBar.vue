@@ -1,6 +1,6 @@
 <!-- 定义 titlebar 组件 -->
 <template lang="html">
-  <div class="page-head">
+  <div class="page-head" fixed>
     <span>{{leftTitle}}</span>
     <div class="right-head">
       <div class="searchdiv" >

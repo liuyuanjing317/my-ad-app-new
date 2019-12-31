@@ -1,6 +1,5 @@
 <template>
- <!-- <div >-->
-   <!-- <HeaderPage></HeaderPage>-->
+  <div class="page-tabbar">
     <div class="page-wrap">
       <!-- 自定义头组件 -->
       <titlebar
@@ -8,55 +7,70 @@
         :rightFirstImg="require('../../assets/img/ic_search.png')"
         :rightSecondImg="require('../../assets/img/ic_add.png')"
       />
-
-      <SwipeImgItem></SwipeImgItem>
-      <mt-tab-container class="page-tabbar-container" v-model="active">
+      <div style="margin-top:48px;">
+      </div>
+      <mt-tab-container class="page-tabbar-container" v-model="selected">
         <mt-tab-container-item id="message">
-          <MessageList></MessageList>
+          <SwipeImgItem></SwipeImgItem>
+          <messagelist></messagelist>
+           </mt-tab-container-item>
+        <mt-tab-container-item id="ad">
+          <AdList/>
         </mt-tab-container-item>
-       <!-- <mt-tab-container-item id="contact">
-          <contact></contact>
+        <mt-tab-container-item id="person">
+          <Person></Person>
         </mt-tab-container-item>
-        <mt-tab-container-item id="find">
-          <find></find>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="me">
-          <me></me>
-        </mt-tab-container-item>-->
       </mt-tab-container>
     </div>
-  <!--  <h1>Hello index</h1>
-    <h2>Essential Links</h2>-->
- <!-- </div>-->
-
+    <mt-tabbar v-model="selected" fixed>
+      <mt-tab-item id="message">
+        <img slot="icon" src="../../assets/icon/all-fill.png">
+        message
+      </mt-tab-item>
+      <mt-tab-item id="ad">
+        <img slot="icon" src="../../assets/icon/display-code.png">
+       ad
+      </mt-tab-item>
+      <mt-tab-item id="person">
+        <img slot="icon" src="../../assets/icon/user-fill.png">
+        person
+      </mt-tab-item>
+    </mt-tabbar>
+  </div>
 </template>
 
 <script>
-  import titlebar from '../common/TitleBar';
-  import HeaderPage from '../common/HeaderPage';
-  import SwipeImgItem from '../centeral/SwipeImgItem';
-  import MessageList from '../centeral/MessageList'
-    export default {
-        name: "Index",
-        components:{
-            HeaderPage,
-            titlebar,
-            SwipeImgItem,
-            MessageList,
+     import TitleBar from '../common/TitleBar';
+     import MessageList from '../centeral/article/MessageList';
+     import AdList from '../centeral/ad/AdList'
+     import SwipeImgItem from '../centeral/article/SwipeImgItem';
+     import BottomTabbar from '../bottom/BottomTabbar';
+     import Person from '../centeral/person/Person';
+     export default {
+        name: 'Index',
+        data() {
+            return {
+                selected: 'message',
+
+            };
         },
-        data(){
-            return{
-                selected:12121,
-                active:"message",
-            }
+        components:{
+            'titlebar':TitleBar,
+            'messagelist':MessageList,
+            SwipeImgItem,
+            BottomTabbar,
+            Person,
+            AdList,
+
         }
-    }
+    };
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .page-tabbar {
     overflow: hidden;
-    /* height: 100vh; */
+    height: 100vh;
   }
   /*修改tab 默认文字的颜色*/
   .mint-tabbar > .mint-tab-item{

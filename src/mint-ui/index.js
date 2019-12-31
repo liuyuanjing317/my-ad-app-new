@@ -28,6 +28,12 @@ Vue.component(Button.name, Button);
 Vue.component(IndexList.name, IndexList);
 Vue.component(IndexSection.name, IndexSection);
 
+/*
+import { Lazyload } from 'mint-ui';
+Vue.component(Lazyload.name, Lazyload);*/
+
+
+
 
 
 

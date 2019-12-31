@@ -1,7 +1,7 @@
 <template>
   <div class="find-item">
     <div class="top">
-      <img  :src="data.img">
+      <img  src="../../assets/img/listImg2.jpg">
     </div>
 
     <div class="bottom">

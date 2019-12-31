@@ -18,17 +18,15 @@
       v-for="(item,index) in datas.data"
       :key="index"
       :data="item"
-      :imgurl="require('../../assets/img/listImg.png')"
-      :itemClick="clickitem"
+      :imgurl="require('../../../assets/img/listImg.png')"
+      @click.native="clickItem(item)"
     ></DocItem>
   </div>
 </template>
 
 <script>
-import DocItem from '../common/DocItem'
-import Message from '../common/Message'
-import messagelist from '../../json/messagelist.json'
-import doclist from '../../json/doclist.json'
+import DocItem from '../../common/DocItem'
+import doclist from '../../../json/doclist.json'
 export default {
 
   data() {
@@ -37,13 +35,22 @@ export default {
     }
   },
   methods:{
-    clickitem(n) {
-        console.log(n)
-    }
+    clickItem(n) {
+        console.log(11111111);
+        console.log(n);
+        this.jump(n);
+    },
+      jump(data){
+          this.$router.push({
+              path:'/articleDetail',
+              query:{
+                  data:data
+              }
+          });
+      },
   },
 
   components:{
-    'message':Message,
       DocItem,
       doclist
   }

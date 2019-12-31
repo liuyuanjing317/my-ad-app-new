@@ -5,10 +5,7 @@ import App from './App'
 import router from './router'
 import './mint-ui/index.js'
 
-import Vant,{Lazyload} from 'vant';
-// options 为可选参数，无则不传
-Vue.use(Vant);
-Vue.use(Lazyload);
+
 
 
 Vue.config.productionTip = false
