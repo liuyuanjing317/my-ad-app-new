@@ -1,12 +1,12 @@
 <template lang="html">
-  <div class="">
+  <div >
 
     <seller
       class="itemstyle"
-      v-for="(item,index) in datas.data"
+      v-for="(item,index) in datas"
       :key="index"
       :data="item"
-
+      @click.native="clickItem(item)"
     ></seller>
 
   </div>
@@ -15,18 +15,43 @@
 <script>
  import Message from '../../common/Message'
 import messagelist from '../../../json/messagelist.json'
+ import axios from 'axios'
  import seller from '../../common/seller-list-item';
 export default {
   name:"AdList",
   data() {
     return {
-      datas:messagelist
+      datas:[]
     }
   },
+    mounted(){
+        this.getData();
+
+        window.addEventListener('scroll', this.handleScroll);
+    },
   methods:{
-    clickitem(n) {
-        console.log(n)
-    }
+      clickItem(n) {
+          this.jump(n);
+      },
+      jump(data){
+          console.log(data);
+          this.$router.push({
+              path:'/adDetail',
+              query:{
+                  data:data
+              }
+          });
+      },
+      getData(){
+          let self=this;
+          let data={};
+          data.pageSize=100;
+          data.pageNum=1;
+          axios.post(this.GLOBAL.adUrl+'/getPageList',data).then(function(res) {
+              self.datas = res.data.data;
+
+          });
+      },
   },
 
   components:{

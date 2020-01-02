@@ -7,7 +7,7 @@
     </div>
 
     <div class="right">
-      <div class="name">{{ data.subtitle }}</div>
+      <div class="name">{{ data.adName }}</div>
 
       <div class="mid clearfix">
     <!--    <star class="fl" :size="24" ></star>-->
@@ -41,16 +41,22 @@ export default {
   },
   props: {
     data: {
-      type: Object,
-      default () {
-        return {}
-      }
+         id:"1321317161220034",
+        adNo:"1",
+        adName:"1",
+        adPrincipal:"1",
+        adAmount:"1",
+        adAddr:"1",
+        adStatus:1,
+        delFlag:null,
+        gmtCreate:"2019-12-25 08:00:00",
+        projectApprovalDate:null
     }
   },
   watch: {},
   methods: {
     toRestaurant (data) {
-      // console.log(data)
+       console.log(data)
       this.$emit('toRestaurant', data)
     }
   },

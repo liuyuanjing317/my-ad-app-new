@@ -5,6 +5,11 @@ import App from './App'
 import router from './router'
 import './mint-ui/index.js'
 
+import global_ from './components/common/Global'//引用文件
+Vue.prototype.GLOBAL = global_//挂载到Vue实例上面
+
+import axios from 'axios'
+Vue.use(axios);
 
 
 

@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Index from '@/components/home/Index'
-import ArticlDdetail from '@/components/centeral/article/ArticlDdetail'
+import ArticleDdetail from '@/components/centeral/article/ArticleDdetail'
+import AdDetail from '@/components/centeral/ad/AdDetail'
 
 Vue.use(Router);
 
@@ -16,7 +17,12 @@ export default new Router({
     {
       path: '/articleDetail',
       name: 'articleDetail',
-      component: ArticlDdetail
+      component: ArticleDdetail
+    },
+    {
+      path: '/adDetail',
+      name: 'adDetail',
+      component: AdDetail
     }
   ]
 })

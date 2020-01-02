@@ -25,15 +25,19 @@
 </template>
 
 <script>
-import DocItem from '../../common/DocItem'
+import DocItem from './DocItem'
 import doclist from '../../../json/doclist.json'
+import axios from 'axios'
 export default {
 
   data() {
     return {
-      datas:doclist
+      datas:[]
     }
   },
+  mounted(){
+        this.getData();
+    },
   methods:{
     clickItem(n) {
         console.log(11111111);
@@ -46,6 +50,16 @@ export default {
               query:{
                   data:data
               }
+          });
+      },
+      getData(){
+          let self=this;
+          let data={};
+          data.pageSize=100;
+          data.pageNum=1;
+          data.type="docList";
+          axios.post(this.GLOBAL.serverUrl+'/service/getLatestList',data).then(function(res) {
+              self.datas = res.data.data;
           });
       },
   },
