@@ -38,7 +38,7 @@
 
 <style scoped>
   .page-tabbar {
-    overflow: hidden;
+    /*overflow: hidden;*/
     height: 100vh;
   }
   /*修改tab 默认文字的颜色*/

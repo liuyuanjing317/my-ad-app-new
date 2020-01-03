@@ -117,7 +117,6 @@ export default {
 
     }
     .page-tabbar {
-      overflow: hidden;
       height: 100vh;
     }
     /*修改tab 默认文字的颜色*/
