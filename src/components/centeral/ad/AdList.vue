@@ -3,7 +3,7 @@
 
     <seller
       class="itemstyle"
-      v-for="(item,index) in datas"
+      v-for="(item,index) in datas.data"
       :key="index"
       :data="item"
       @click.native="clickItem(item)"

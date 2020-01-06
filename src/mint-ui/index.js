@@ -32,6 +32,12 @@ Vue.component(IndexSection.name, IndexSection);
 import { Lazyload } from 'mint-ui';
 Vue.component(Lazyload.name, Lazyload);*/
 
+import { InfiniteScroll } from 'mint-ui';
+Vue.use(InfiniteScroll);
+
+import { Loadmore } from 'mint-ui';
+Vue.component(Loadmore.name, Loadmore);
+
 
 
 

@@ -5,6 +5,10 @@ import Index from '@/components/home/Index'
 import ArticleDdetail from '@/components/centeral/article/ArticleDdetail'
 import AdDetail from '@/components/centeral/ad/AdDetail'
 
+import loadMore from '@/components/centeral/article/loadMore'
+
+
+
 Vue.use(Router);
 
 export default new Router({
@@ -23,6 +27,11 @@ export default new Router({
       path: '/adDetail',
       name: 'adDetail',
       component: AdDetail
+    },
+    {
+      path: '/loadMore',
+      name: 'loadMore',
+      component: loadMore
     }
   ]
 })

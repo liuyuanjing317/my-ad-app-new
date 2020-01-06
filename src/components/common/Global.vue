@@ -1,5 +1,5 @@
 <script>
-    const serverUrl='http://wzpzw4.natappfree.cc/ad-portal';
+    const serverUrl='http://a6spy8.natappfree.cc/ad-portal';
     const adUrl=serverUrl+'/ad';
     export default
     {
