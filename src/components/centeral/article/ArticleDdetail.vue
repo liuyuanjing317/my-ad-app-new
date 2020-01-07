@@ -32,22 +32,27 @@
       <br/>
       <br/>
   </div>
+    <div><Comments/></div>
   </div>
 
 </template>
 <script>
     import axios from 'axios'
     import BackHeaderTitleBar from '../../common/BackHeaderTitleBar';
+    import Comments from '../../common/Comment';
+
 
 export default {
     name: "ArticleDdetail",
     components:{
+        Comments,
         BackHeaderTitleBar,
 
     },
     data(){
         return {
             articleDetail:{},
+            comment:"",
         }
     },
     mounted(){

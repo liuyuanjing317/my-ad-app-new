@@ -1,5 +1,5 @@
 <script>
-    const serverUrl='http://a6spy8.natappfree.cc/ad-portal';
+    const serverUrl='http://10.10.7.232:9085/ad-portal';
     const adUrl=serverUrl+'/ad';
     export default
     {

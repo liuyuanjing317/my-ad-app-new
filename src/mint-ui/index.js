@@ -39,6 +39,13 @@ import { Loadmore } from 'mint-ui';
 Vue.component(Loadmore.name, Loadmore);
 
 
+import { Field } from 'mint-ui';
+Vue.component(Field.name, Field);
+
+
+import { Toast } from 'mint-ui';
+Vue.component(Toast.name, Toast);
+
 
 
 

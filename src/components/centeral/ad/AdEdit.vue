@@ -3,42 +3,16 @@
     <div class="page-wrap">
 
       <BackHeaderTitleBar  />
-      <div style="margin-top:48px;">
-      </div>
-      <h3><center>『 {{detail.adName}} 』</center></h3>
-      <br/>
-      <div id="content" >
-        <ul>
-          <li><span>产品编号：</span>{{detail.adNo}}</li>
-          <li><span>产品名称：</span>{{detail.adName}}</li>
-          <li><span>产品地址：</span>{{detail.adAddr}}</li>
-
-        </ul>
-        <!--<div v-html="articleDetail.subtitle"></div>-->
-        <!--  <span>{{articleDetail.content}}</span>-->
-      </div>
-      <hr style="height: 3px;border: none;background-color: #ddd;background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);"/>
-      <div style="border-left: 3px solid #f44336;float: left;text-align: left">
-        <br/>
-        <div style="margin-bottom:8px;">
-          &nbsp;&nbsp;&nbsp;&nbsp;<strong style="font-size:18px;">本文作者：&nbsp;&nbsp;</strong>
-          <!--  <span style="font-size:16px;">{{articleDetail.author}}</span>-->
-        </div>
-        <div style="margin-bottom:8px;">
-          &nbsp;&nbsp;&nbsp;&nbsp;<strong style="font-size:18px;">发表时间：&nbsp;&nbsp;</strong>
-          <!-- <#-- <span style="font-size:16px;">{{articleDetail.gmtCreate}}</span>&ndash;&gt;-->
-        </div>
-        <div>
-          &nbsp;&nbsp;&nbsp;&nbsp;<strong style="font-size:18px;">版权声明：&nbsp;&nbsp;</strong>
-          <span style="font-size:16px;">本项目所有解释权归<strong>TyCoding</strong>所有</span>
-        </div>
-        <br/>
-      </div>
-      <br/>
-      <br/>
-      <br/>
+      <div>
+        <mt-field label="username" placeholder="Input username" v-model="username"></mt-field>
+        <mt-field label="email" placeholder="Input email" type="email" v-model="email"></mt-field>
+        <mt-field label="password" placeholder="Input password" type="password" v-modal="password"></mt-field>
+        <mt-field label="phone" placeholder="Input tel" type="tel" v-model="phone"></mt-field>
+        <mt-field label="website" placeholder="Input website" type="url" v-model="website"></mt-field>
+        <mt-field label="number" placeholder="Input number" type="number" v-model="number"></mt-field>
+        <mt-field label="birthday" placeholder="Input birthday" type="date" v-model="birthday"></mt-field>
+        <mt-field label="introduction" placeholder="introduction" type="textarea" rows="4" v-model="introduction"></mt-field></div>
   </div>
-    <div><Comments/></div>
   </div>
 
 </template>

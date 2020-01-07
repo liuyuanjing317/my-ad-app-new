@@ -25,15 +25,15 @@
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="message">
         <img slot="icon" src="../../assets/icon/all-fill.png">
-        message
+        文章列表
       </mt-tab-item>
       <mt-tab-item id="ad">
         <img slot="icon" src="../../assets/icon/display-code.png">
-       ad
+       项目列表
       </mt-tab-item>
       <mt-tab-item id="person">
         <img slot="icon" src="../../assets/icon/user-fill.png">
-        person
+        个人信息
       </mt-tab-item>
     </mt-tabbar>
   </div>

@@ -78,7 +78,6 @@ export default {
     },
   methods:{
     clickItem(n) {
-        console.log(n);
         this.jump(n);
     },
     jump(data){
@@ -96,20 +95,17 @@ export default {
           data.pageNum=currentPage;
           data.type="docList";
           axios.post(this.GLOBAL.serverUrl+'/service/getLatestList',data).then(function(res) {
-              console.log(res.data);
               self.datas.pageIndex = res.data.data.pageIndex;
               self.datas.pageNums=res.data.data.pageNums;
               self.datas.count=res.data.data.count;
               for(let i in res.data.data.data){
                   self.datas.data.push(res.data.data.data[i]);
               }
-              console.log(self.datas.data);
           });
       },
       loadMore() {
           let self=this;
           if(self.datas.count == self.datas.data.length){
-              console.log("dont load");
               return;
           }
           self.loading = true;

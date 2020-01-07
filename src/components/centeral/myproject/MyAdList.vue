@@ -1,25 +1,18 @@
 <template lang="html">
   <div >
 
-    <AdListItem
-      class="itemstyle"
-      v-for="(item,index) in datas"
-      :key="index"
-      :data="item"
-
-    ></AdListItem>
-    <!--@click.native="clickItem(item)"-->
 
   </div>
 </template>
 
 <script>
- import Message from '../../common/Message'
-import messagelist from '../../../json/messagelist.json'
- import axios from 'axios'
- import AdListItem from '../../common/AdListItem';
+ import AdList from '../ad/AdList'
 export default {
-  name:"AdList",
+  name:"MyAdList",
+  components:{
+      AdList,
+
+    },
   data() {
     return {
       datas:[]
@@ -27,6 +20,7 @@ export default {
   },
     mounted(){
         this.getData();
+
         window.addEventListener('scroll', this.handleScroll);
     },
   methods:{
@@ -57,11 +51,7 @@ export default {
       },
   },
 
-  components:{
-    'message':Message,
-      AdListItem,
 
-  }
 }
 </script>
 

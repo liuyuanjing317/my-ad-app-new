@@ -12,8 +12,12 @@
       <div class="mid clearfix">
     <!--    <star class="fl" :size="24" ></star>-->
         <span class="count fl">2019-12-31</span>
-       <!-- <span class="distance fr">0</span>
-        <span class="time fr">1分钟</span>-->
+        <span class="distance fr">0</span>
+        <span class="time fr">1分钟</span>
+      </div>
+      <div class="mid clearfix">
+        <span @click="jump(data,'detail')" class="count fl">查看详情</span>
+        <span  @click="jump(data,'edit')" class="distance fr">编辑信息</span>
       </div>
 
       <!--<div class="fee">
@@ -32,7 +36,7 @@
 <script>
 
 export default {
-    name:"seller",
+    name:"AdListItem",
   components: {
 
   },
@@ -41,7 +45,7 @@ export default {
   },
   props: {
     data: {
-         id:"1321317161220034",
+        id:"1321317161220034",
         adNo:"1",
         adName:"1",
         adPrincipal:"1",
@@ -58,7 +62,20 @@ export default {
     toRestaurant (data) {
        console.log(data)
       this.$emit('toRestaurant', data)
-    }
+    },
+      jump(data,flag){
+        var url="";
+        switch (flag) {
+            case "detail":url="/adDetail";break;
+            case "edit":url="/adEdit";break;
+        }
+          this.$router.push({
+              path:url,
+              query:{
+                  data:data
+              }
+          });
+      },
   },
   filters: {},
   computed: {},
