@@ -15,7 +15,7 @@
           <messagelist></messagelist>
            </mt-tab-container-item>
         <mt-tab-container-item id="ad">
-          <AdList/>
+          <AdList />
         </mt-tab-container-item>
         <mt-tab-container-item id="person">
           <Person></Person>
@@ -50,8 +50,7 @@
         name: 'Index',
         data() {
             return {
-                selected: 'message',
-
+                selected:'message',
             };
         },
         components:{
@@ -62,7 +61,16 @@
             Person,
             AdList,
 
-        }
+        },
+         mounted(){
+             var data=this.$route.query.data;
+             if(data !=null &&data.selected!=null){
+                 this.selected = data.selected;
+             }
+             /*if(data !=null &&data.adAddFlag!=null){
+                 this.adAddFlag = data.adAddFlag;
+             }*/
+         },
     };
 </script>
 

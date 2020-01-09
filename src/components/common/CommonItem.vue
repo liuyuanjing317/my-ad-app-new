@@ -40,10 +40,30 @@ export default {
     isShowDivider:{
       default:false
     },
-    clickItem:{
-      type:Function
+    flag:{
+        default:""
     }
+  },
+    methods:{
+      clickItem(){
+          alert(this.flag);
+          var url="";
+          var data={};
+          switch(this.flag){
+              case 'edit': break;
+              case 'addProject':url="/adEdit";data.selected="person";data.adFlag=true; break;
+              case 'reply':break;
+          }
+
+          this.$router.push({
+              path:url,
+              query:{
+                  data:data
+              }
+          });
+      }
   }
+
 }
 </script>
 

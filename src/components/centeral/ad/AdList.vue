@@ -1,12 +1,12 @@
 <template lang="html">
   <div >
-
+    <BackHeaderTitleBar v-if="adFlag" :selectedTab="'ad'" />
     <AdListItem
       class="itemstyle"
       v-for="(item,index) in datas"
       :key="index"
       :data="item"
-
+      :adFlag="adFlag"
     ></AdListItem>
     <!--@click.native="clickItem(item)"-->
 
@@ -15,17 +15,35 @@
 
 <script>
  import Message from '../../common/Message'
-import messagelist from '../../../json/messagelist.json'
+ import messagelist from '../../../json/messagelist.json'
  import axios from 'axios'
  import AdListItem from '../../common/AdListItem';
+ import BackHeaderTitleBar from '../../common/BackHeaderTitleBar';
 export default {
   name:"AdList",
+  components:{
+        'message':Message,
+        AdListItem,
+        BackHeaderTitleBar,
+    },
   data() {
     return {
-      datas:[]
+      datas:[],
+      adFlag:false,
     }
   },
+  /*props:{
+      adFlag:{
+            default:false
+        },
+    },*/
+
     mounted(){
+        var data=this.$route.query.data;
+        if(data !=null){
+            console.log(data);
+            this.adFlag = data.adFlag;
+        }
         this.getData();
         window.addEventListener('scroll', this.handleScroll);
     },
@@ -57,11 +75,7 @@ export default {
       },
   },
 
-  components:{
-    'message':Message,
-      AdListItem,
 
-  }
 }
 </script>
 

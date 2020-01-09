@@ -19,21 +19,23 @@
       :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
       :leftImg="require('../../../assets/icon/profile.png')"
       leftLable="修改信息"
-      :clickItem="clickitem"
+      :flag="'edit'"
     />
 
     <commonitem
       :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
       :leftImg="require('../../../assets/icon/work.png')"
-      leftLable="我的项目"
-      :clickItem="clickitem"
+      leftLable="新增项目"
+
+      :flag="'addProject'"
     />
 
     <commonitem
       :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
       :leftImg="require('../../../assets/icon/problem.png')"
       leftLable="我的回复"
-      :clickItem="clickitem"
+
+      :flag="'reply'"
       :isShowDivider=true
     />
   </div>
@@ -52,9 +54,7 @@ export default {
     }
   },
   methods:{
-    clickitem() {
-      console.log('打开详情')
-    }
+
   },
   components:{
     'commonitem':CommonItem

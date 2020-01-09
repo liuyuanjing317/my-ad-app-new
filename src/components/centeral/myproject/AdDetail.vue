@@ -71,7 +71,6 @@ export default {
         }
     },
     mounted(){
-        console.log(this.$route.query);
         this.detail=this.$route.query.data;
         if(this.$route.query.id){
             this.id = this.$route.query.id;

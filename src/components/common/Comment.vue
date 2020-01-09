@@ -24,6 +24,7 @@
 
 <script>
     import { Toast } from 'mint-ui';
+    import "../../assets/scss/system-css.scss";
     export default {
         name:"Comments",
         data() {
@@ -154,6 +155,7 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../assets/scss/system-css'; /*引入公共样式*/
     .cmt-container {
         h3 {
             font-size: 16px
@@ -179,7 +181,6 @@
             }
         }
     }
-  .system-color{
-    background-color: #3E3A39;
-  }
+
+
 </style>

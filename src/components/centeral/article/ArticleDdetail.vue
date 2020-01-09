@@ -2,7 +2,7 @@
   <div class="page-tabbar">
     <div class="page-wrap">
 
-      <BackHeaderTitleBar></BackHeaderTitleBar>
+      <BackHeaderTitleBar :selectedTab="message"/>
       <div style="margin-top:48px;">
       </div>
       <h3><center>『 {{articleDetail.title}} 』</center></h3>
@@ -53,6 +53,7 @@ export default {
         return {
             articleDetail:{},
             comment:"",
+            message:"message",
         }
     },
     mounted(){

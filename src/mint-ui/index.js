@@ -46,6 +46,8 @@ Vue.component(Field.name, Field);
 import { Toast } from 'mint-ui';
 Vue.component(Toast.name, Toast);
 
+import { MessageBox } from 'mint-ui';
+Vue.component(MessageBox.name, MessageBox);
 
 
 

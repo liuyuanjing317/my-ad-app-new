@@ -1,17 +1,14 @@
 <template>
   <div class="page-tabbar">
     <div class="page-wrap">
-
-      <BackHeaderTitleBar  />
-      <div>
-        <mt-field label="username" placeholder="Input username" v-model="username"></mt-field>
-        <mt-field label="email" placeholder="Input email" type="email" v-model="email"></mt-field>
-        <mt-field label="password" placeholder="Input password" type="password" v-modal="password"></mt-field>
-        <mt-field label="phone" placeholder="Input tel" type="tel" v-model="phone"></mt-field>
-        <mt-field label="website" placeholder="Input website" type="url" v-model="website"></mt-field>
-        <mt-field label="number" placeholder="Input number" type="number" v-model="number"></mt-field>
-        <mt-field label="birthday" placeholder="Input birthday" type="date" v-model="birthday"></mt-field>
-        <mt-field label="introduction" placeholder="introduction" type="textarea" rows="4" v-model="introduction"></mt-field></div>
+      <BackHeaderTitleBar  :selectedTab="selectedTab"/>
+      <div style="margin-top: 48px">
+        <mt-field label="产品编号" placeholder="请输入产品编号" v-model="detail.adNo"></mt-field>
+        <mt-field label="产品名称" placeholder="请输入产品名称" v-model="detail.adName"></mt-field>
+        <mt-field label="产品金额" placeholder="请输入产品金额"  v-model="detail.adAmount"></mt-field>
+        <mt-field label="产品地址" placeholder="请输入产品地址"  v-model="detail.adAddr"></mt-field>
+        <mt-button class="system-color"  type="primary" size="large" @click="save">保存</mt-button>
+      </div>
   </div>
   </div>
 
@@ -20,9 +17,11 @@
     import axios from 'axios'
     import BackHeaderTitleBar from '../../common/BackHeaderTitleBar';
     import Comments from '../../common/Comment';
+    import { MessageBox } from 'mint-ui';
+
 
 export default {
-    name: "AdDetail",
+    name: "AdEdit",
     components:{
         BackHeaderTitleBar,
         Comments,
@@ -41,12 +40,19 @@ export default {
                 delFlag:null,
                 gmtCreate:"2019-12-25 08:00:00",
                 projectApprovalDate:null
-            }
+            },
+            selectedTab:'ad',
         }
     },
     mounted(){
         console.log(this.$route.query);
-        this.detail=this.$route.query.data;
+        var data=this.$route.query.data;
+        if(data!=null && data.selected!=null){
+            this.selectedTab=data.selected;
+            console.log(this.selectedTab);
+            //data.removeAttribute("selected");
+        }
+        this.detail=data;
         if(this.$route.query.id){
             this.id = this.$route.query.id;
             this.getData();//初始化页面时
@@ -66,11 +72,45 @@ export default {
                     }
                 });
         },
+        save(){
+            let self=this;
+            var url="";
+            if(self.detail.id!=null){
+                url="/update";
+            }else{
+                url="/saveAdd";
+            }
+            // 获取api分组
+            axios.post(this.GLOBAL.adUrl+url,self.detail)
+                .then(function(res){
+                    console.log(res);
+                    if(res.data.code == 200){
+
+                       /* Toast({
+                            message: 'operation success',
+                            iconClass: 'icon icon-success'
+                        });*/
+                        MessageBox.confirm('操作成功，是否跳转列表页!').then(action => {
+                                 console.log(action);
+                                  var data={};
+                                  data.selected="ad";
+                                self.$router.push({
+                                       path:'/',
+                                     query:{
+                                        data:data
+                                     }
+
+                            })
+                        });
+                    }
+                });
+        }
     }
 
 }
 </script>
 <style lang="scss" scoped>
+  @import '../../../assets/scss/system-css'; /*引入公共样式*/
     .product-detail {
         figure {
             figcaption {

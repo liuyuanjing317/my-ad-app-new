@@ -2,7 +2,7 @@
   <div class="page-tabbar">
     <div class="page-wrap">
 
-      <BackHeaderTitleBar  />
+      <BackHeaderTitleBar :selectedTab="ad" />
       <div style="margin-top:48px;">
       </div>
       <h3><center>『 {{detail.adName}} 』</center></h3>
@@ -67,12 +67,14 @@ export default {
                 delFlag:null,
                 gmtCreate:"2019-12-25 08:00:00",
                 projectApprovalDate:null
-            }
+            },
+            ad:"ad",
         }
     },
     mounted(){
         console.log(this.$route.query);
         this.detail=this.$route.query.data;
+        console.log(this.$route.query.data);
         if(this.$route.query.id){
             this.id = this.$route.query.id;
             this.getData();//初始化页面时

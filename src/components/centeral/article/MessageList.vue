@@ -138,7 +138,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+  .page-loadmore-list{
+    margin-left: -50px;
+  }
 .itemstyle{
   padding-left: 5px;
   padding-right: 5px;

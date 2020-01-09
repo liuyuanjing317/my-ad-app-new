@@ -18,6 +18,8 @@
       <div class="mid clearfix">
         <span @click="jump(data,'detail')" class="count fl">查看详情</span>
         <span  @click="jump(data,'edit')" class="distance fr">编辑信息</span>
+        <span v-if="adFlag"  @click="jump(data,'edit')" class="distance fr">新增信息</span>
+
       </div>
 
       <!--<div class="fee">
@@ -36,7 +38,7 @@
 <script>
 
 export default {
-    name:"AdListItem",
+  name:"AdListItem",
   components: {
 
   },
@@ -55,7 +57,8 @@ export default {
         delFlag:null,
         gmtCreate:"2019-12-25 08:00:00",
         projectApprovalDate:null
-    }
+    },
+    adFlag:false
   },
   watch: {},
   methods: {

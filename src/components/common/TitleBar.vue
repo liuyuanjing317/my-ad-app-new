@@ -57,6 +57,7 @@ export default {
   height: 48px;
   color:#fff;
   font-size: 18px;
+  margin-top: -7px;
 }
 .right-head{
   display: flex;

@@ -1,7 +1,7 @@
 <template>
 
       <mt-header class="page-head">
-        <router-link to="/"  slot="left">
+        <router-link :to="{path: backUrl}"  @click.native="back" slot="left">
           <mt-button icon="back">back</mt-button>
         </router-link>
       </mt-header>
@@ -14,7 +14,10 @@
         name: "BackHeaderTitleBar",
         props:{
             backUrl:{
-                default:'/'
+                default:''
+            },
+            selectedTab:{
+                default:'message'
             },
         },
 
@@ -25,12 +28,19 @@
         },
         methods:{
             back(){
-                if (window.history.length <= 1) {
-                    this.$router.push({path:'/'})
+                this.$router.push({
+                    path:"/",
+                    query:{
+                        data:{selected:this.selectedTab}
+                    }
+
+                })
+               /* if (window.history.length <= 1) {
+
                     return false
                 } else {
                     this.$router.go(-1)
-                }
+                }*/
             }
         }
     }
@@ -69,6 +79,7 @@
     height: 48px;
     color:#fff;
     font-size: 18px;
+    margin-top: -7px;
   }
 
 
