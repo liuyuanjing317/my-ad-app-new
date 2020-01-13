@@ -2,11 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Index from '@/components/home/Index'
-import ArticleDdetail from '@/components/centeral/article/ArticleDdetail'
+import ArticleDetail from '@/components/centeral/article/ArticleDetail'
 import AdDetail from '@/components/centeral/ad/AdDetail'
 import AdEdit from '@/components/centeral/ad/AdEdit'
 import AdList from '@/components/centeral/ad/AdList'
+import Login from '@/components/centeral/login/Login'
 import loadMore from '@/components/centeral/article/loadMore'
+
 
 
 
@@ -22,7 +24,7 @@ export default new Router({
     {
       path: '/articleDetail',
       name: 'articleDetail',
-      component: ArticleDdetail
+      component: ArticleDetail
     },
     {
       path: '/adDetail',
@@ -42,6 +44,12 @@ export default new Router({
       path: '/loadMore',
       name: 'loadMore',
       component: loadMore
+    }
+    ,
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     }
   ]
 })

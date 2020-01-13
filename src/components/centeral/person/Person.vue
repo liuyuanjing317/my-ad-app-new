@@ -18,9 +18,16 @@
     <commonitem
       :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
       :leftImg="require('../../../assets/icon/profile.png')"
+      leftLable="登陆"
+      :flag="'Login.vue'"
+    />
+    <commonitem
+      :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
+      :leftImg="require('../../../assets/icon/profile.png')"
       leftLable="修改信息"
       :flag="'edit'"
     />
+
 
     <commonitem
       :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"

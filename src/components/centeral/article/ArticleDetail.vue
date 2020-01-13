@@ -9,7 +9,7 @@
       <br/>
       <div id="content" >
         <div v-html="articleDetail.subtitle"></div>
-        <!--  <span>{{articleDetail.content}}</span>-->
+          <div v-html="articleDetail.content"></div>
       </div>
       <hr style="height: 3px;border: none;background-color: #ddd;background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);"/>
       <div style="border-left: 3px solid #f44336;float: left;text-align: left">
@@ -43,7 +43,7 @@
 
 
 export default {
-    name: "ArticleDdetail",
+    name: "ArticleDetail",
     components:{
         Comments,
         BackHeaderTitleBar,
@@ -59,8 +59,9 @@ export default {
     mounted(){
         console.log(this.$route.query);
         this.articleDetail=this.$route.query.data;
-        if(this.$route.query.id){
-            this.id = this.$route.query.id;
+        console.log(this.articleDetail);
+        if(this.articleDetail.id){
+            this.id = this.articleDetail.id;
             this.getData();//初始化页面时
         }
         window.scroll(0,0);

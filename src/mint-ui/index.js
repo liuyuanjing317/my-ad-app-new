@@ -49,6 +49,10 @@ Vue.component(Toast.name, Toast);
 import { MessageBox } from 'mint-ui';
 Vue.component(MessageBox.name, MessageBox);
 
+import { Navbar} from 'mint-ui';
+Vue.component(Navbar.name, Navbar);
+
+
 
 
 

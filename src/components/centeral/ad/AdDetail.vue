@@ -9,9 +9,9 @@
       <br/>
       <div id="content" >
         <ul>
-          <li><span>产品编号：</span>{{detail.adNo}}</li>
-          <li><span>产品名称：</span>{{detail.adName}}</li>
-          <li><span>产品地址：</span>{{detail.adAddr}}</li>
+          <li><span>项目编号：</span>{{detail.adNo}}</li>
+          <li><span>项目名称：</span>{{detail.adName}}</li>
+          <li><span>项目地址：</span>{{detail.adAddr}}</li>
 
         </ul>
         <!--<div v-html="articleDetail.subtitle"></div>-->

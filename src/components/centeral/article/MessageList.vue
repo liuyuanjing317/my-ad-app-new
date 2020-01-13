@@ -1,8 +1,8 @@
 <template lang="html">
-  <div class="page-loadmore">
-    <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+  <div>
+  <!--  <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
       <loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
-        <ul class="page-loadmore-list">
+        <ul class="page-loadmore-list">-->
          <!-- <li v-for="(item, key, index) in datas.data" :key="index" class="page-loadmore-listitem">-->
             <DocItem
               class="itemstyle"
@@ -13,7 +13,7 @@
               @click.native="clickItem(item)"/>
 
          <!-- </li>-->
-        </ul>
+      <!--  </ul>
         <div slot="bottom" class="mint-loadmore-bottom">
           <span v-show="bottomStatus !== 'loading'" :class="{ 'is-rotate': bottomStatus === 'drop' }">↑</span>
           <span v-show="bottomStatus === 'loading'">
@@ -21,7 +21,7 @@
           </span>
         </div>
       </loadmore>
-    </div>
+    </div>-->
 <!--    <ul
       v-infinite-scroll="loadMore"
       infinite-scroll-disabled="loading"
@@ -55,7 +55,7 @@ export default {
       datas:{
           count: 0,
           data: [],
-          pageSize:5,
+          pageSize:20,
           pageIndex: 1,
           pageNums: 0,
           pages: 0,
@@ -72,7 +72,7 @@ export default {
         }
     },
   mounted(){
-      this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
+      //this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
       let self=this;
       this.getData(self.datas.pageSize,self.datas.pageIndex);
     },

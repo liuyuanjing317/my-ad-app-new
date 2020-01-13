@@ -3,11 +3,13 @@
     const adUrl=serverUrl+'/ad';
     const serviceUrl=serverUrl+'/service';
     const articleUrl=serverUrl+'/article';
+    const loginUrl=serverUrl+'/userLogin';
     export default
     {
         serverUrl,//用户地址
         adUrl,
         serviceUrl,
         articleUrl,
+        loginUrl,
     }
 </script>

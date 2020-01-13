@@ -1,0 +1,109 @@
+<!-- 登录 组件 -->
+
+<template>
+  <div class="login">
+    <mt-navbar v-model="selected">
+      <mt-tab-item id="1">登录</mt-tab-item>
+      <mt-tab-item id="2">注册</mt-tab-item>
+    </mt-navbar>
+
+    <mt-tab-container v-model="selected">
+      <!-- 登录 -->
+      <mt-tab-container-item id="1" >
+        <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
+        <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
+        <mt-button type="primary" size="large" @click.native="login">登录</mt-button>
+      </mt-tab-container-item>
+
+      <!-- 注册 -->
+      <mt-tab-container-item id="2">
+        <mt-field label="用户名" placeholder="请输入用户名" v-model="register_username"></mt-field>
+        <mt-field label="邮箱" placeholder="请输入邮箱" type="email" v-model="register_email"></mt-field>
+        <mt-field label="密码" placeholder="请输入密码" type="password" v-model="register_password1"></mt-field>
+        <mt-field label="确认密码" placeholder="请确认密码" type="password" v-model="register_password2"></mt-field>
+        <mt-button type="primary" size="large" @click.native="register">注册</mt-button>
+      </mt-tab-container-item>
+    </mt-tab-container>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+    name:"Login",
+  data () {
+    return {
+      selected: '1',
+      username: '',
+      password: '',
+      register_username: '',
+      register_email: '',
+      register_password1: '',
+      register_password2: ''
+    }
+  },
+  props: {},
+  watch: {},
+  methods: {
+    back () {
+      this.$router.push({
+        path: '/index'
+      })
+    },
+    login () {
+      axios.post( this.GLOBAL.loginUrl+'/login', {
+        username: this.username,
+        password: this.password
+      }).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    register () {
+      console.log('register')
+    }
+  },
+  filters: {},
+  computed: {},
+  created () {},
+  mounted () {}
+}
+</script>
+
+<style lang="scss">
+@import '../../../assets/scss/mixin.scss';
+
+
+/*.login {
+  color: #333;
+  margin-top: 40px;
+  background-color: #fff;
+  overflow: visible;
+  .login-wrapper {
+    margin-top: 20px;
+    overflow: hidden;
+    .mint-button {
+      margin-top: 30px;
+    }
+  }
+  .register-wrapper {
+    margin-top: 20px;
+    overflow: hidden;
+    .mint-button {
+      margin-top: 30px;
+    }
+  }
+  .mint-cell-value .mint-field-core{
+    line-height: 21px;
+    width: 100%;
+    height: 40px;
+    margin-bottom:0px;
+    padding: 10px 15px;
+    -webkit-user-select: text;
+    border:none
+  }
+}*/
+
+</style>
