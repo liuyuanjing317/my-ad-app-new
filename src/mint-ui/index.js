@@ -52,6 +52,11 @@ Vue.component(MessageBox.name, MessageBox);
 import { Navbar} from 'mint-ui';
 Vue.component(Navbar.name, Navbar);
 
+import { Popup } from 'mint-ui';
+Vue.component(Popup.name, Popup);
+
+
+
 
 
 

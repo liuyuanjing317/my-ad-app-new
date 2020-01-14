@@ -7,6 +7,14 @@
       <mt-tab-item id="2">注册</mt-tab-item>
     </mt-navbar>
 
+    <mt-popup
+      v-model="popupVisible"
+      position="top"
+      popup-transition="popup-fade">
+      <ul >
+        内容
+      </ul>
+    </mt-popup>
     <mt-tab-container v-model="selected">
       <!-- 登录 -->
       <mt-tab-container-item id="1" >
@@ -29,7 +37,8 @@
 
 <script>
 import axios from 'axios'
-
+import { Indicator } from 'mint-ui';
+import { MessageBox } from 'mint-ui';
 export default {
     name:"Login",
   data () {
@@ -40,7 +49,8 @@ export default {
       register_username: '',
       register_email: '',
       register_password1: '',
-      register_password2: ''
+      register_password2: '',
+      popupVisible:false
     }
   },
   props: {},
@@ -52,17 +62,49 @@ export default {
       })
     },
     login () {
+        Indicator.open({
+            text: 'Loading...',
+            spinnerType: 'fading-circle'
+        });
       axios.post( this.GLOBAL.loginUrl+'/login', {
         username: this.username,
         password: this.password
       }).then(res => {
-        console.log(res)
+          console.log(res);
+          if(res.data.code == 200){
+              Indicator.close();
+              MessageBox.alert("登陆成功", "提示");
+              this.$router.push({
+                  path:'/'
+
+              })
+          }
       }).catch(err => {
         console.log(err)
       })
     },
     register () {
-      console.log('register')
+        Indicator.open({
+            text: 'Loading...',
+            spinnerType: 'fading-circle'
+        });
+        axios.post( this.GLOBAL.loginUrl+'/register', {
+            username: this.register_username,
+            password: this.register_password1
+        }).then(res => {
+            console.log(res);
+            if(res.data.code == 200){
+                Indicator.close();
+                MessageBox.alert("注册成功，请登录", "提示");
+                this.selected=1;
+                /*this.$router.push({
+                    path:'/'
+
+                })*/
+            }
+        }).catch(err => {
+            console.log(err)
+        })
     }
   },
   filters: {},
