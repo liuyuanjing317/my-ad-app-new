@@ -8,6 +8,7 @@ import AdEdit from '@/components/centeral/ad/AdEdit'
 import AdList from '@/components/centeral/ad/AdList'
 import Login from '@/components/centeral/login/Login'
 import loadMore from '@/components/centeral/article/loadMore'
+import PersonEdit from '@/components/centeral/person/PersonEdit'
 
 
 
@@ -50,6 +51,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/personEdit',
+      name: 'personEdit',
+      component: PersonEdit
     }
   ]
 })

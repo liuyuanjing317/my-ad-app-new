@@ -2,36 +2,39 @@
 
 <template>
   <div class="login">
-    <mt-navbar v-model="selected">
-      <mt-tab-item id="1">登录</mt-tab-item>
-      <mt-tab-item id="2">注册</mt-tab-item>
-    </mt-navbar>
+    <BackHeaderTitleBar :selectedTab="'person'"/>
+    <div style="padding-top: 43px">
+      <mt-navbar v-model="selected">
+        <mt-tab-item id="1">登录</mt-tab-item>
+        <mt-tab-item id="2">注册</mt-tab-item>
+      </mt-navbar>
+      <mt-popup
+        v-model="popupVisible"
+        position="top"
+        popup-transition="popup-fade">
+        <ul >
+          内容
+        </ul>
+      </mt-popup>
+      <mt-tab-container v-model="selected">
+        <!-- 登录 -->
+        <mt-tab-container-item id="1" >
+          <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
+          <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
+          <mt-button type="primary" size="large" @click.native="login">登录</mt-button>
+        </mt-tab-container-item>
 
-    <mt-popup
-      v-model="popupVisible"
-      position="top"
-      popup-transition="popup-fade">
-      <ul >
-        内容
-      </ul>
-    </mt-popup>
-    <mt-tab-container v-model="selected">
-      <!-- 登录 -->
-      <mt-tab-container-item id="1" >
-        <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
-        <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
-        <mt-button type="primary" size="large" @click.native="login">登录</mt-button>
-      </mt-tab-container-item>
+        <!-- 注册 -->
+        <mt-tab-container-item id="2">
+          <mt-field label="用户名" placeholder="请输入用户名" v-model="register_username"></mt-field>
+          <mt-field label="邮箱" placeholder="请输入邮箱" type="email" v-model="register_email"></mt-field>
+          <mt-field label="密码" placeholder="请输入密码" type="password" v-model="register_password1"></mt-field>
+          <mt-field label="确认密码" placeholder="请确认密码" type="password" v-model="register_password2"></mt-field>
+          <mt-button type="primary" size="large" @click.native="register">注册</mt-button>
+        </mt-tab-container-item>
+      </mt-tab-container>
+    </div>
 
-      <!-- 注册 -->
-      <mt-tab-container-item id="2">
-        <mt-field label="用户名" placeholder="请输入用户名" v-model="register_username"></mt-field>
-        <mt-field label="邮箱" placeholder="请输入邮箱" type="email" v-model="register_email"></mt-field>
-        <mt-field label="密码" placeholder="请输入密码" type="password" v-model="register_password1"></mt-field>
-        <mt-field label="确认密码" placeholder="请确认密码" type="password" v-model="register_password2"></mt-field>
-        <mt-button type="primary" size="large" @click.native="register">注册</mt-button>
-      </mt-tab-container-item>
-    </mt-tab-container>
   </div>
 </template>
 
@@ -39,8 +42,13 @@
 import axios from 'axios'
 import { Indicator } from 'mint-ui';
 import { MessageBox } from 'mint-ui';
+import BackHeaderTitleBar from '../../common/BackHeaderTitleBar';
+
 export default {
     name:"Login",
+    components:{
+        BackHeaderTitleBar,
+    },
   data () {
     return {
       selected: '1',

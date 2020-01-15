@@ -49,7 +49,7 @@ export default {
           var url="";
           var data={};
           switch(this.flag){
-              case 'edit': break;
+              case 'edit': url="/personEdit";data.selected="person";break;
               case 'Login.vue': url="/login";data.selected="person"; break;;
               case 'addProject':url="/adEdit";data.selected="person";data.adFlag=true; break;
               case 'reply':break;
