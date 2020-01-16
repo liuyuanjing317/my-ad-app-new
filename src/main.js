@@ -9,7 +9,7 @@ import global_ from './components/common/Global'//引用文件
 Vue.prototype.GLOBAL = global_//挂载到Vue实例上面
 
 import axios from 'axios'
-Vue.use(axios);
+Vue.prototype.$http = axios;
 
 
 

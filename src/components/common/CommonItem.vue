@@ -46,21 +46,24 @@ export default {
   },
     methods:{
       clickItem(){
-          var url="";
+          var url="/";
           var data={};
           switch(this.flag){
-              case 'edit': url="/personEdit";data.selected="person";break;
-              case 'Login.vue': url="/login";data.selected="person"; break;;
-              case 'addProject':url="/adEdit";data.selected="person";data.adFlag=true; break;
+              case 'edit': url="/personEdit";data.selected="person";this.jump(url,data);break;
+              case 'Login': url="/login";data.selected="person";this.jump(url,data); break;
+              case 'addProject':url="/adEdit";data.selected="person";data.adFlag=true;this.jump(url,data); break;
               case 'reply':break;
+              case 'logout': localStorage.removeItem('userInfo');data.selected="person";this.jump(url,data);break;
           }
-          this.$router.push({
-              path:url,
-              query:{
-                  data:data
-              }
-          });
-      }
+      },
+        jump(url,data){
+            this.$router.push({
+                path:url,
+                query:{
+                    data:data
+                }
+            });
+        }
   }
 
 }

@@ -84,6 +84,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+  img{
+    width: 100vw;
+    height: 60vw;
+    vertical-align: top;
+  }
     .product-detail {
         figure {
             figcaption {

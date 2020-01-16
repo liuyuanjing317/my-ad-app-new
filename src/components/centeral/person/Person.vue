@@ -2,12 +2,30 @@
   <div class="rootDiv">
     <!-- 头布局 -->
     <div class="headView">
-      <div class="leftDiv">
+      <div class="leftDiv" v-if="login">
+     <!--   <div v-if="unLogig">-->
+          <img src="../../../assets/icon/avator.jpg" alt="" class="leftImg">
+          <div class="labeldiv" v-model="user">
+            <span class="name" >{{user.userName}}</span>
+            <span class="wechatcode" >{{user.userPhone}}</span>
+          </div>
+      </div>
+      <div class="leftDiv"  v-if="unLogig">
+        <!--   <div v-if="unLogig">-->
         <img src="../../../assets/icon/avator.jpg" alt="" class="leftImg">
-        <div class="labeldiv">
-          <span class="name">Liuyuanjing</span>
-          <span class="wechatcode">18275309818</span>
+        <div class="labeldiv"  @click="loginAndRegister">
+          <span class="name" >登陆/注册</span>
         </div>
+        <!-- </div>-->
+        <!--<div v-if="unLogig">
+          <img src="../../../assets/icon/avator.jpg" alt="" class="leftImg">
+          <div class="labeldiv">
+            <span class="name" >登陆/注册</span>
+           &lt;!&ndash; <span class="wechatcode" v-model="userPhone"></span>&ndash;&gt;
+            &lt;!&ndash;<span class="wechatcode" v-model="userPhone"></span>&ndash;&gt;
+          </div>
+        </div>-->
+
       </div>
       <img src="../../../assets/img/ic_qr_code.png" alt="" class="rightImg">
     </div>
@@ -15,25 +33,19 @@
     我们可以定义一个 json 数组「单独文件，或是在
     data 中模拟数组」，然后遍历出来即可，可以自行试一试
     -->
-    <commonitem
+   <!-- <commonitem
       :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
       :leftImg="require('../../../assets/icon/profile.png')"
       leftLable="登陆"
       :flag="'Login.vue'"
-    />
-    <commonitem
-      :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
-      :leftImg="require('../../../assets/icon/profile.png')"
-      leftLable="修改信息"
-      :flag="'edit'"
-    />
+    />-->
+
 
 
     <commonitem
       :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
       :leftImg="require('../../../assets/icon/work.png')"
       leftLable="新增项目"
-
       :flag="'addProject'"
     />
 
@@ -44,6 +56,18 @@
 
       :flag="'reply'"
       :isShowDivider=true
+    />
+    <commonitem
+      :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
+      :leftImg="require('../../../assets/icon/profile.png')"
+      leftLable="修改信息"
+      :flag="'edit'"
+    />
+    <commonitem
+      :class="[isActive==true?peritemMrgingStyle:peritemMrgingStyleNotMaring]"
+      :leftImg="require('../../../assets/icon/profile.png')"
+      leftLable="退出登陆"
+      :flag="'logout'"
     />
   </div>
 
@@ -57,10 +81,38 @@ export default {
     return {
       isActive:true,
       peritemMrgingStyle:'itemStyle',
-      peritemMrgingStyleNotMaring:'itemStyleNotMargin'
+      peritemMrgingStyleNotMaring:'itemStyleNotMargin',
+      user:{
+          userName:"liuyuanjing",
+          userPhone:18275309818,
+      }  ,
+      unLogig:true,
+      login:false,
     }
   },
+  mounted(){
+      var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+      if(userInfo!=null){
+          this.user.userName=userInfo.username;
+          this.user.userPhone=userInfo.mobile;
+          this.unLogig=false;
+          this.login=true;
+      }
+  },
   methods:{
+      loginAndRegister(){
+          var data={};
+          data.selected="person";
+          this.$router.push({
+              path:"/login",
+              query:{
+                  data:data
+              }
+          });
+      },
+     /* logout(){
+          localStorage.removeItem('userInfo');
+      }*/
 
   },
   components:{

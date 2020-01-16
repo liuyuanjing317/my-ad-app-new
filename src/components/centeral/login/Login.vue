@@ -58,7 +58,21 @@ export default {
       register_email: '',
       register_password1: '',
       register_password2: '',
-      popupVisible:false
+      popupVisible:false,
+       /*userInfo:{
+           accountNonExpired: true,
+           accountNonLocked: true,
+           authorities: [],
+           body: "",
+           credentialsNonExpired: true,
+           departmentId: null,
+           enabled: true,
+           mobile: "18275309818",
+           password: null,
+           statusCode: 0,
+           token: null,
+           username: "admin",
+       }*/
     }
   },
   props: {},
@@ -78,13 +92,19 @@ export default {
         username: this.username,
         password: this.password
       }).then(res => {
-          console.log(res);
           if(res.data.code == 200){
+              debugger;
+              localStorage.setItem("userInfo",JSON.stringify(res.data.data));
+              var list = JSON.parse(localStorage.getItem("userInfo") )
               Indicator.close();
               MessageBox.alert("登陆成功", "提示");
+              var data={};
+              data.selected="person";
               this.$router.push({
-                  path:'/'
-
+                  path:'/',
+                  query:{
+                          data:data
+                      }
               })
           }
       }).catch(err => {

@@ -72,5 +72,10 @@
     width: 100%;
     height: 100%;
   }
+  img{
+    width: 100vw;
+    height: 60vw;
+    vertical-align: top;
+  }
 
 </style>
