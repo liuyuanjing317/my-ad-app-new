@@ -68,6 +68,8 @@
       :leftImg="require('../../../assets/icon/profile.png')"
       leftLable="退出登陆"
       :flag="'logout'"
+      @click.native="logout"
+
     />
   </div>
 
@@ -110,9 +112,11 @@ export default {
               }
           });
       },
-     /* logout(){
+      logout(){
           localStorage.removeItem('userInfo');
-      }*/
+          this.unLogig=true;
+          this.login=false;
+      }
 
   },
   components:{

@@ -3,11 +3,28 @@
     <div class="page-wrap">
       <BackHeaderTitleBar  :selectedTab="selectedTab"/>
       <div style="margin-top: 48px">
-        <mt-field label="产品编号" placeholder="请输入产品编号" v-model="detail.adNo"></mt-field>
-        <mt-field label="产品名称" placeholder="请输入产品名称" v-model="detail.adName"></mt-field>
-        <mt-field label="产品金额" placeholder="请输入产品金额"  v-model="detail.adAmount"></mt-field>
-        <mt-field label="产品地址" placeholder="请输入产品地址"  v-model="detail.adAddr"></mt-field>
-        <mt-button class="system-color"  type="primary" size="large" @click="save">保存</mt-button>
+        <div>
+          <mt-field label="账户名" placeholder="请输入账户名" v-model="detail.username"></mt-field>
+          <mt-field label="昵称" placeholder="请输入昵称" v-model="detail.nickname"></mt-field>
+          <mt-field label="电话号码" placeholder="请输入电话号码"  v-model="detail.mobile"></mt-field>
+          <mt-field label="邮箱" placeholder="请输入邮箱"  v-model="detail.email"></mt-field>
+          <div class="mint-cell">
+            <div class="mint-cell-left"></div>
+            <div class="mint-cell-wrapper">
+              <div  class="mint-cell-title">
+                <span style="margin-top: 10px;" class="mint-cell-text">头像</span>
+              </div>
+              <div>
+                <UploadImg/>
+              </div>
+            </div>
+
+          </div>
+        <!--  <mt-cell class="imgTitle" title="标题文字"><UploadImg/></mt-cell>-->
+
+          <mt-button class="system-color"  type="primary" size="large" @click="save">保存</mt-button>
+
+        </div>
       </div>
   </div>
   </div>
@@ -20,32 +37,37 @@
     import { MessageBox } from 'mint-ui';
 
 
+    import UploadImg from '../../common/UploadImg';
+
 export default {
     name: "PersonEdit",
     components:{
         BackHeaderTitleBar,
         Comments,
+        UploadImg,
 
     },
     data(){
         return {
             detail:{
-               id:"1321317161220034",
-                adNo:"1",
-                adName:"1",
-                adPrincipal:"1",
-                adAmount:"1",
-                adAddr:"1",
-                adStatus:1,
-                delFlag:null,
-                gmtCreate:"2019-12-25 08:00:00",
-                projectApprovalDate:null
+                mobile: null,
+                password: null,
+                username: "",
+                nickname:"",
+                email:"",
             },
-            selectedTab:'ad',
+            selectedTab:'person',
+            avatar_result:"",
+            selected:"baseInfo",
         }
     },
     mounted(){
-        console.log(this.$route.query);
+        var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        console.log("edit-mounted");
+
+        console.log(userInfo);
+        this.detail=userInfo;
+        /*console.log(this.$route.query);
         var data=this.$route.query.data;
         if(data!=null && data.selected!=null){
             this.selectedTab=data.selected;
@@ -58,7 +80,7 @@ export default {
             this.getData();//初始化页面时
         }
         window.scroll(0,0);
-        this.$emit('headFix', ['fixed',false]);
+        this.$emit('headFix', ['fixed',false]);*/
     },
     methods:{
         getData(){
@@ -169,4 +191,9 @@ export default {
       /* height: 92%; */
       padding-bottom: 60px;
     }
+  .imgTitle{
+    mint-cell-title{
+      width: 5px!important;
+    }
+  }
 </style>

@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 import './mint-ui/index.js'
 
+/*import AvatarUpload from './plugins/avatar_upload'
+Vue.use(AvatarUpload);*/
+
 import global_ from './components/common/Global'//引用文件
 Vue.prototype.GLOBAL = global_//挂载到Vue实例上面
 

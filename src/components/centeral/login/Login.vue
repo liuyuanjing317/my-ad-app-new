@@ -93,7 +93,6 @@ export default {
         password: this.password
       }).then(res => {
           if(res.data.code == 200){
-              debugger;
               localStorage.setItem("userInfo",JSON.stringify(res.data.data));
               var list = JSON.parse(localStorage.getItem("userInfo") )
               Indicator.close();

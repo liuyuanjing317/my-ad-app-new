@@ -1,9 +1,10 @@
 <script>
-    const serverUrl='http://10.10.7.232:9085/ad-portal';
+    const serverUrl='http://liuyuanjing-ad.nat300.top/ad-portal';
     const adUrl=serverUrl+'/ad';
     const serviceUrl=serverUrl+'/service';
     const articleUrl=serverUrl+'/article';
     const loginUrl=serverUrl+'/userLogin';
+    const uploadImgUrl=serverUrl+'/img';
     export default
     {
         serverUrl,//用户地址
@@ -11,5 +12,6 @@
         serviceUrl,
         articleUrl,
         loginUrl,
+        uploadImgUrl,
     }
 </script>
