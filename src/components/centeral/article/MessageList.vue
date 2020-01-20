@@ -74,6 +74,12 @@ export default {
   mounted(){
       //this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
       let self=this;
+      var articleList = JSON.parse(localStorage.getItem("articleList"));
+      if(articleList!=null){
+          this.datas.data=articleList;
+      }else {
+          this.getData();
+      }
       this.getData(self.datas.pageSize,self.datas.pageIndex);
     },
   methods:{
@@ -98,9 +104,12 @@ export default {
               self.datas.pageIndex = res.data.data.pageIndex;
               self.datas.pageNums=res.data.data.pageNums;
               self.datas.count=res.data.data.count;
-              for(let i in res.data.data.data){
+              self.datas.data=res.data.data.data;
+              localStorage.setItem("articleList",JSON.stringify(res.data.data.data));
+
+              /*for(let i in res.data.data.data){
                   self.datas.data.push(res.data.data.data[i]);
-              }
+              }*/
           });
       },
       loadMore() {

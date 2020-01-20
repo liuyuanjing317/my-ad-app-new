@@ -94,7 +94,6 @@ export default {
       }).then(res => {
           if(res.data.code == 200){
               localStorage.setItem("userInfo",JSON.stringify(res.data.data));
-              var list = JSON.parse(localStorage.getItem("userInfo") )
               Indicator.close();
               MessageBox.alert("登陆成功", "提示");
               var data={};
@@ -123,7 +122,7 @@ export default {
             if(res.data.code == 200){
                 Indicator.close();
                 MessageBox.alert("注册成功，请登录", "提示");
-                this.selected=1;
+                this.selected="1";
                 /*this.$router.push({
                     path:'/'
 

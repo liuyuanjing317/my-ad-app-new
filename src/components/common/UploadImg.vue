@@ -7,7 +7,6 @@
       <div style="margin-top:20px;">
           <input type="file" id="upload" accept="image" @change="upload">
           <label for="upload"></label>
-
       </div>
     </div>
   </div>
@@ -22,12 +21,18 @@
         name: "UploadImg",
         data () {
             return {
-                headerImage:'',picValue:'',
+                picValue:'',
                 file:null,
+                avatar:"",
+                headerImage:"",
 
             }
         },
+
         mounted () {
+            var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            this.headerImage=userInfo.avatar;
+
         },
         methods: {
             upload (e) {
@@ -37,7 +42,7 @@
                 if (!files.length) return;
                 this.picValue = files[0];
                 this.imgPreview(this.picValue);
-
+                console.log("upload end");
             },
             imgPreview (file) {
                 let self = this;
@@ -83,8 +88,12 @@
                     headers:{'Content-Type':'multipart/form-data; boundary=OCqxMF6-JxtxoMDHmoG5W5eY9MGRsTBp'}
                 };
                axios.post(this.GLOBAL.uploadImgUrl+'/uploadImg',formdata).then(function(res) {
-                   if(res.data.code == 200){
+                   if(res.data.code == 0){
                        console.log(res.data);
+                       var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+                       console.log(userInfo);
+                       userInfo.avatar=res.data.data.src;
+                       localStorage.setItem('userInfo',JSON.stringify(userInfo));
 
                    }
                 });

@@ -44,7 +44,13 @@ export default {
             console.log(data);
             this.adFlag = data.adFlag;
         }
-        this.getData();
+        debugger;
+        var adList = JSON.parse(localStorage.getItem("adList"));
+        if(adList!=null){
+            this.datas=adList;
+        }else {
+            this.getData();
+        }
         window.addEventListener('scroll', this.handleScroll);
     },
   methods:{
@@ -69,8 +75,8 @@ export default {
           axios.post(this.GLOBAL.adUrl+'/getPageList',data).then(function(res) {
               console.log(res);
               self.datas = res.data.data;
+              localStorage.setItem("adList",JSON.stringify(res.data.data));
               console.log(self.datas);
-
           });
       },
   },

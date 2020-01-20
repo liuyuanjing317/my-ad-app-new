@@ -4,9 +4,10 @@
       <!-- 自定义头组件 -->
       <titlebar
         leftTitle="AD"
-        :rightFirstImg="require('../../assets/img/ic_search.png')"
-        :rightSecondImg="require('../../assets/img/ic_add.png')"
+        :rightSecondImg="require('../../assets/img/ic_search.png')"
+
       />
+      <!--:rightSecondImg="require('../../assets/img/ic_add.png')"-->
       <div style="margin-top:48px;">
       </div>
       <mt-tab-container class="page-tabbar-container" v-model="selected">

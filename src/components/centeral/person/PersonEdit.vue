@@ -15,7 +15,7 @@
                 <span style="margin-top: 10px;" class="mint-cell-text">头像</span>
               </div>
               <div>
-                <UploadImg/>
+                <UploadImg  />
               </div>
             </div>
 
@@ -55,6 +55,8 @@ export default {
                 username: "",
                 nickname:"",
                 email:"",
+                avatar:"",
+                id:"",
             },
             selectedTab:'person',
             avatar_result:"",
@@ -83,39 +85,23 @@ export default {
         this.$emit('headFix', ['fixed',false]);*/
     },
     methods:{
-        getData(){
-            let self = this;
-            // 获取api分组
-            axios.get(this.GLOBAL.serverUrl+"/article/detail?id="+self.id)
-                .then(function(res){
-                    console.log(res);
-                    if(res.data.code == 200){
-                        self.detail=res.data.data
-                    }
-                });
-        },
+
         save(){
             let self=this;
-            var url="";
-            if(self.detail.id!=null){
-                url="/update";
-            }else{
-                url="/saveAdd";
-            }
-            // 获取api分组
-            axios.post(this.GLOBAL.adUrl+url,self.detail)
+            var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            self.detail.avatar=userInfo.avatar;
+            //这里写接口
+            let config = {
+                headers:{'token':userInfo.token}
+            };
+            axios.post(this.GLOBAL.loginUrl+"/updateUser",self.detail,config)
                 .then(function(res){
                     console.log(res);
                     if(res.data.code == 200){
-
-                       /* Toast({
-                            message: 'operation success',
-                            iconClass: 'icon icon-success'
-                        });*/
                         MessageBox.confirm('操作成功，是否跳转列表页!').then(action => {
                                  console.log(action);
                                   var data={};
-                                  data.selected="ad";
+                                  data.selected="person";
                                 self.$router.push({
                                        path:'/',
                                      query:{
@@ -126,7 +112,8 @@ export default {
                         });
                     }
                 });
-        }
+        },
+
     }
 
 }

@@ -4,7 +4,7 @@
     <div class="headView">
       <div class="leftDiv" v-if="login">
      <!--   <div v-if="unLogig">-->
-          <img src="../../../assets/icon/avator.jpg" alt="" class="leftImg">
+          <img :src="avatarUrl" alt="" class="leftImg">
           <div class="labeldiv" v-model="user">
             <span class="name" >{{user.userName}}</span>
             <span class="wechatcode" >{{user.userPhone}}</span>
@@ -90,6 +90,7 @@ export default {
       }  ,
       unLogig:true,
       login:false,
+      avatarUrl:null,
     }
   },
   mounted(){
@@ -99,6 +100,9 @@ export default {
           this.user.userPhone=userInfo.mobile;
           this.unLogig=false;
           this.login=true;
+          if(userInfo.avatar!=''&&userInfo.avatar!=null){
+              this.avatarUrl=userInfo.avatar;
+          }
       }
   },
   methods:{
