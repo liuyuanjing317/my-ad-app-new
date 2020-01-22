@@ -9,6 +9,7 @@
         <mt-field label="产品地址" placeholder="请输入产品地址"  v-model="detail.adAddr"></mt-field>
         <mt-button class="system-color"  type="primary" size="large" @click="save">保存</mt-button>
       </div>
+      <!--<BatchUploadImg/>-->
   </div>
   </div>
 
@@ -18,13 +19,14 @@
     import BackHeaderTitleBar from '../../common/BackHeaderTitleBar';
     import Comments from '../../common/Comment';
     import { MessageBox } from 'mint-ui';
-
+    /*import BatchUploadImg from '../../common/BatchUploadImg';*/
 
 export default {
     name: "AdEdit",
     components:{
         BackHeaderTitleBar,
         Comments,
+      /*  BatchUploadImg,*/
 
     },
     data(){

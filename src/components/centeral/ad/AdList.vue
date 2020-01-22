@@ -45,12 +45,12 @@ export default {
             this.adFlag = data.adFlag;
         }
         debugger;
-        var adList = JSON.parse(localStorage.getItem("adList"));
+        /*var adList = JSON.parse(localStorage.getItem("adList"));
         if(adList!=null){
             this.datas=adList;
-        }else {
+        }else {*/
             this.getData();
-        }
+        /*}*/
         window.addEventListener('scroll', this.handleScroll);
     },
   methods:{

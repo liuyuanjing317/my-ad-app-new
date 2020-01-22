@@ -74,12 +74,12 @@ export default {
   mounted(){
       //this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
       let self=this;
-      var articleList = JSON.parse(localStorage.getItem("articleList"));
+     /* var articleList = JSON.parse(localStorage.getItem("articleList"));
       if(articleList!=null){
           this.datas.data=articleList;
-      }else {
-          this.getData();
-      }
+      }else {*/
+          //this.getData();
+     /* }*/
       this.getData(self.datas.pageSize,self.datas.pageIndex);
     },
   methods:{
